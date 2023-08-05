@@ -1,0 +1,10 @@
+to create a module :-> in nest cli
+    nest g mo modules/guiz  ->  nest g mo path
+
+to create a controller inside the module 
+    nest g co modules/guiz quizcontroller --no-spec  -->  nest g co path not-include-test-file
+
+
+Depedency Injection ->
+ has @Injectable decorator
+ can be injected in other places-> eg: Inject Service in Controller
