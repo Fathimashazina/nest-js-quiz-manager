@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { QuizService } from './quiz.service';
+import { CreateQuizDto } from './dto/CreateQuiz.dto';
 
 @Controller('quiz') // any url which stated with 'quiz'
 export class QuizController {
@@ -11,8 +12,10 @@ export class QuizController {
     return this.quizServece.getAllQuiz();
   }
 
-  @Post('/')
-  createQuiz(@Body() quizData){
-    return {data:quizData}
+  @Post('/create')
+  @HttpCode(200) //OK
+  @UsePipes(ValidationPipe)
+  async createQuiz(@Body() quizData:CreateQuizDto){
+    return await this.quizServece.createNewQuiz(quizData)
   }
 }
