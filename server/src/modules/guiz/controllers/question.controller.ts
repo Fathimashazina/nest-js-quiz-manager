@@ -3,7 +3,6 @@ import { CreateQuestionDto } from "../dto/create-question.dto";
 import { QuestionService } from "../services/question.service";
 import { Question } from "../entities/question.entity";
 import { QuizService } from "../services/quiz.service";
-// import { QuizService } from "../quiz.service";
 
 @Controller('question')
 export class QuestionController{

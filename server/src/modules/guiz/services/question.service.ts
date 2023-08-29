@@ -11,6 +11,14 @@ export class QuestionService {
     @InjectRepository(Question)
     private questionRepository: Repository<Question>,
   ) {}
+
+    async findQuestionById(id:number):Promise<Question>{
+      return await this.questionRepository.findOne({
+        where: {id: id},
+        relations: ['quiz','options'],
+      })
+    }
+
   async createQuestion(
     question: CreateQuestionDto,
     quiz: Quiz,
